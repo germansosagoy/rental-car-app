@@ -8,7 +8,7 @@ export default function LogoDashboard() {
       href="/"
       className="flex items-center h-20 gap-2 border-b cursor-pointer min-h-20 p-6"
     >
-      <Image src="/logo.svg" alt="logo" width={30} height={30} priority />
+      <Image src="/logo.svg" alt="logo" width={40} height={40} priority />
       <h1 className="text-lg font-bold">Rental Car</h1>
     </Link>
   );

@@ -3,6 +3,7 @@ import { SidebarItem } from "./SidebarItem";
 // import { useAuth } from "@clerk/nextjs";
 import { Separator } from "@/components/ui/separator";
 import { dataAdminSidebar, dataSidebar } from "./SidebarRoutes.data";
+import { get } from "http";
 
 export default function SidebarRoutes() {
   //   const { userId } = useAuth();
@@ -30,8 +31,8 @@ export default function SidebarRoutes() {
       <div>
         <Separator />
 
-        <footer className="p-3 mt-3 text-center text-sm">
-          2024. All rights deserved
+        <footer className="p-3 mt-3 text-center text-xs">
+          <p>© 2024. Todos los derechos reservados</p>
         </footer>
       </div>
     </div>

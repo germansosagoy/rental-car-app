@@ -15,7 +15,7 @@ export const dataSidebar = [
   {
     icon: Bookmark,
     label: "Vehículos favoritos",
-    href: "/saved-cars",
+    href: "/loved-cars",
   },
 ];
 
@@ -23,11 +23,11 @@ export const dataAdminSidebar = [
   {
     icon: Car,
     label: "Gestione sus vehículos",
-    href: "/dashboard",
+    href: "/dashboard/admin/cars-manager",
   },
   {
     icon: CalendarRange,
     label: "Todas las Reservas",
-    href: "/reserves",
+    href: "/dashboard/admin/reserves-manager",
   },
 ];
