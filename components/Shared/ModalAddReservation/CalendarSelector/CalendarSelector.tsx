@@ -5,13 +5,17 @@ import { CalendarSelectorProps } from "./CalendarSelector.types";
 import { DateRange } from "react-day-picker";
 import { addDays, format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { Popover, PopoverContent, PopoverTrigger,} from "@radix-ui/react-popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@radix-ui/react-popover";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "lucide-react";
 
 export function CalendarSelector(props: CalendarSelectorProps) {
-  const { setDateSelected, className, carPriceDay} = props;
+  const { setDateSelected, className, carPriceDay } = props;
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 5),
@@ -39,8 +43,10 @@ export function CalendarSelector(props: CalendarSelectorProps) {
     <div className={cn("grid gap-2", className)}>
       {date?.from && date?.to && (
         <>
-          <p className="mt-4 text-lg text-black">Días totales {daysBetween}</p>
-          <p>Precio total: {daysBetween * Number(carPriceDay)} $(Imp. incluidos)</p>
+          <p className="mt-4 text-lg text-black">Días totales: {daysBetween}</p>
+          <p className="text-black font-medium">
+            Precio total: {daysBetween * Number(carPriceDay)} $(Imp. incluidos)
+          </p>
         </>
       )}
       <Popover>
@@ -68,8 +74,15 @@ export function CalendarSelector(props: CalendarSelectorProps) {
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-        <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={1} />
+        <PopoverContent className="w-auto p-0 bg-white shadow-lg rounded-lg" align="start">
+          <Calendar
+            initialFocus
+            mode="range"
+            defaultMonth={date?.from}
+            selected={date}
+            onSelect={setDate}
+            numberOfMonths={1}
+          />
         </PopoverContent>
       </Popover>
     </div>

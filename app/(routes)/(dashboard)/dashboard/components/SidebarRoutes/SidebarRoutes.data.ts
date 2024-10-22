@@ -28,6 +28,6 @@ export const dataAdminSidebar = [
   {
     icon: CalendarRange,
     label: "Todas las Reservas",
-    href: "/dashboard/admin/reserves-manager",
+    href: "/dashboard/admin/reserves-admin",
   },
 ];

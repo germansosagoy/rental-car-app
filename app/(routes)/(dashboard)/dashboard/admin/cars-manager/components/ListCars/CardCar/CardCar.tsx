@@ -59,14 +59,14 @@ export function CardCar(props: CardCarProps) {
         alt={car.name}
         width={200}
         height={200}
-        className="rounded-lg object-cover mx-auto mt-3"
+        className="rounded-lg object-cover mx-auto mt-2"
       />
       {car.isPublish ? (
-        <p className="absolute top-0 right-0 w-full p-1 text-center text-white bg-green-700 rounded-t-lg">
+        <p className="absolute top-0 right-0 w-full p-0.5 text-center text-white bg-green-700 rounded-t-lg">
           Publicado
         </p>
       ) : (
-        <p className="absolute top-0 left-0 right-0 w-full p-1 text-center text-white bg-red-300 rounded-t-lg">
+        <p className="absolute top-0 left-0 right-0 w-full p-0.5 text-center text-white bg-red-300 rounded-t-lg">
           Sin publicar
         </p>
       )}

@@ -1,9 +1,19 @@
-// import 
+import { Navbar } from "@/components/Shared/Navbar";
+import { FirstBlock } from "./components/FirstBlock";
+import { SliderBrands } from "./components/SliderBrands";
+import { HowItWorks } from "./components/HowItWorks";
+import { WhyChooseUs } from "./components/WhyChooseUs";
+import { Testimonials } from "./components/Testimonials";
 
 export default function Home() {
   return (
-    <div className="h-full flex items-center justify-center">
-      homepage
-    </div>
+    <>
+      <Navbar />
+      <FirstBlock />
+      <SliderBrands />
+      <HowItWorks />
+      <WhyChooseUs />
+      <Testimonials />
+    </>
   );
 }

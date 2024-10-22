@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter} from "next/font/google";
 import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -7,6 +7,8 @@ import { esES} from '@clerk/localizations'
 import { Toaster } from "@/components/ui/toaster";
 
 const outfit = Inter({ subsets: ["latin"] }); 
+// const poppins = Poppins({weight: '400', subsets: ['latin']})
+
 
 
 export const metadata: Metadata = {

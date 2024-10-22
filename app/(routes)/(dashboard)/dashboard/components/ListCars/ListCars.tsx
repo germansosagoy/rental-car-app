@@ -4,12 +4,14 @@ import { ListCarsProps } from "./ListCars.types";
 import Image from "next/image";
 import { Bookmark, Fuel, Gauge, Gem, Users, Wrench } from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
+import { useLovedCards } from "@/hooks/use-loved-cars";
 
 export function ListCars(props: ListCarsProps) {
   const { cars } = props;
+  const { addLoveItem, lovedItems, removeLovedItem } = useLovedCards();
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 my-6">
       {cars.map((car: Car) => {
         const {
           priceDay,
@@ -22,6 +24,9 @@ export function ListCars(props: ListCarsProps) {
           type,
           name,
         } = car;
+
+        const savedCar = lovedItems.some((item) => item.id === car.id);
+
         return (
           <div key={id} className="shadow hover:shadow-md rounded-lg p-1 w-72">
             <Image
@@ -63,10 +68,13 @@ export function ListCars(props: ListCarsProps) {
                 {engine}
               </p>
               <div className="flex items-center justify-center gap-x-3">
-                <ModalAddReservation car={car}/>
-                <Bookmark
-                  className="w-4 h-4 mt-2"
-                  onClick={() => console.log("[Favorite]")}
+                <ModalAddReservation car={car} />
+                <Bookmark className={`w-6 h-6 mt-2 cursor-pointer ${savedCar && "fill-black"}`}
+                  onClick={
+                    savedCar
+                      ? () => removeLovedItem(car.id)
+                      : () => addLoveItem(car)
+                  }
                   strokeWidth={1}
                 />
               </div>

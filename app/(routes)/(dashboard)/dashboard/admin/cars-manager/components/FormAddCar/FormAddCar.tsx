@@ -30,7 +30,7 @@ import { FormAddCarProps } from "./FormAddCar.types";
 import { useRouter } from "next/navigation";
 
 export function FormAddCar(props: FormAddCarProps) {
-  const {setOpenDialog} = props
+  const {setOpenDialog} = props;
   const [photoUpload, setPhotoUpload] = useState(false);
   
   const router = useRouter();

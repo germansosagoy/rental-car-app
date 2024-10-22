@@ -17,9 +17,13 @@ import { CalendarSelector } from "./CalendarSelector";
 import { useState } from "react";
 import { addDays } from "date-fns";
 import { DateRange } from "react-day-picker";
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+
 
 export function ModalAddReservation(props: ModalAddReservationProps) {
   const { car } = props;
+
   const [dateSelected, setDateSelected] = useState<{
     from: Date | undefined;
     to: Date | undefined;
@@ -28,8 +32,28 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
     to: addDays(new Date(), 5),
   });
 
-  const reserverCar = async (car: Car, dateSelected: DateRange) => {
-    console.log('reserve car')
+  const onReserveCar = async (car: Car, dateSelected: DateRange) => { 
+    try {
+      const response = await axios.post("/api/checkout", {
+        carId: car.id,
+        priceDay: car.priceDay,
+        startDate: dateSelected.from,
+        endDate: dateSelected.to,
+        carName: car.name,
+      });
+
+      console.log("orden creada", response.data);
+      toast({
+        title: "Reserva creada exitosamente ✔",
+        duration: 3000,
+      });
+    } catch (error) {
+      console.error("Error al crear la orden", error);
+      toast({
+        title: "Algo salió mal. Inténtelo de nuevo",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -45,12 +69,15 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
             Selecciona las fechas para alquilar el vehiculo
           </AlertDialogTitle>
           <AlertDialogDescription>
-            <CalendarSelector setDateSelected={setDateSelected} carPriceDay={car.priceDay} />
+            <CalendarSelector
+              setDateSelected={setDateSelected}
+              carPriceDay={car.priceDay}
+            />
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction onClick={() => reserverCar(car, dateSelected)}>
+          <AlertDialogAction onClick={() => onReserveCar(car, dateSelected)}>
             Reservar
           </AlertDialogAction>
         </AlertDialogFooter>
