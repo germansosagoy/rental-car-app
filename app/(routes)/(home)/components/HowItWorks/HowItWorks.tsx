@@ -5,17 +5,17 @@ import Image from "next/image";
 export function HowItWorks() {
   return (
     <section className="py-10 px-4 md:px-6 lg:px-8 bg-background">
-    <div className="max-w-5xl mx-auto text-center">
+    <div className="max-w-6xl mx-auto text-center">
       <span className="inline-block mb-2 px-4 py-3 text-gray-700/60 font-semibold rounded-lg text-md">
         ¿CÓMO FUNCIONA?
       </span>
-      <h2 className="text-3xl font-bold text-center mb-20 text-primary leading-tight">
+      <h2 className="text-2xl lg:text-4xl font-bold text-center mb-20 text-primary leading-tight">
         Alquile con los siguientes 3 pasos
       </h2>
 
       {/* Contenedor de las tarjetas */}
       <div className="relative flex items-center justify-between">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 elative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 relative z-10">
           {/* Tarjeta 1 (más pequeña) */}
           <Card className="flex flex-col items-center text-center p-8 transform scale-95 border-white">
             <Image
