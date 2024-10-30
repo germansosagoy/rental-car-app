@@ -1,23 +1,24 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 
 export function Navbar() {
-  const { userId } = auth();
-
-  console.log(userId);
+  // const { userId } = auth();
 
   return (
     <nav className="w-full max-w-7xl mx-auto bg-white py-6">
       <div className="container mx-auto flex justify-between items-center px-4 lg:px-8">
         {/* Logo */}
-        <Link className="flex items-center" href="/">
+        <Link href="/" className="flex items-center">
           <Image src="/logo.svg" alt="RentCars Logo" width={50} height={50} />
-          <span className="lg:ml-3 text-xl font-medium">RentalCar</span>
+          <span className="lg:ml-3 text-xl font-medium hidden lg:block">RentalCar</span>
         </Link>
         <div className="hidden lg:flex space-x-10">
-          <Link href="/cars" className="text-gray-700 font-medium hover:text-blue-600">
+          <Link
+            href="/cars"
+            className="text-gray-700 font-medium hover:text-blue-600"
+          >
             Reservar
           </Link>
           <a href="#" className="text-gray-700 font-medium hover:text-blue-600">
@@ -34,7 +35,7 @@ export function Navbar() {
               href="/dashboard"
               className="text-gray-700 hover:text-blue-600 font-normal"
             >
-            Dashboard
+              Dashboard
             </a>
             <UserButton />
           </SignedIn>
